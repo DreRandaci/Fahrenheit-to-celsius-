@@ -4,6 +4,7 @@ function fahrenheitConverter(input) {
 	let fahrenheitOutput = input*9/5 + 32;
 	let fahrenheitAnswer = fahrenheitOutput.toFixed(1);
 		if (fahrenheitAnswer > 90) {
+		document.getElementById("output").classList.remove('redText', 'blueText', 'greenText');
 		document.getElementById("output").classList.add('redText');
 		} else if (fahrenheitAnswer < 32) {
 		document.getElementById("output").classList.add('blueText');
@@ -19,6 +20,7 @@ function celsiusConverter(input) {
 	let celsiusOutput = (input-32) * 5/9;
 	let celsiusAnswer = celsiusOutput.toFixed(1);
 		if (celsiusAnswer > 32) {
+		document.getElementById("output").classList.remove('redText', 'blueText', 'greenText');
 		document.getElementById("output").classList.add('redText');
 		} else if (celsiusAnswer < 0) {
 		document.getElementById("output").classList.add('blueText');
@@ -63,7 +65,12 @@ function clearField() {
 }
 
 document.getElementById("convertButton").addEventListener('click', function(){determineConverter()});
-document.getElementById("userInput").addEventListener('keyup', function(){determineConverter()});
+document.getElementById("userInput").addEventListener('keydown', function(e) {
+    if (e.keyCode === 13) {
+      	determineConverter();
+      };
+  });
+
 document.getElementById("clearButton").addEventListener('click', function(){clearField()});
 
 
