@@ -9,3 +9,17 @@ main {
 h1, h3	{
 	text-align: center;
 }
+
+
+
+.redText {
+	color: red;
+}
+
+.blueText {
+	color: blue;
+}
+
+.greenText {
+	color: green;
+}

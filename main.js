@@ -1,56 +1,76 @@
 
-let userInput = document.getElementById("userInput").value;
-// userInput = parseFloat(userInput);
 
 function fahrenheitConverter(input) {
-	// debugger;
-	let fahrenheitOutput = (input-32) * 5/9;
-	fahrenheitOutput = fahrenheitOutput.toFixed(1);
-	// var fahrenheitString = fahrenheitOutput + "°F";
-    // return fahrenheitString;
-    console.log(fahrenheitOutput);
-    return fahrenheitOutput; //+ "°F";
+	let fahrenheitOutput = input*9/5 + 32;
+	let fahrenheitAnswer = fahrenheitOutput.toFixed(1);
+		if (fahrenheitAnswer > 90) {
+		document.getElementById("output").classList.add('redText');
+		} else if (fahrenheitAnswer < 32) {
+		document.getElementById("output").classList.add('blueText');
+		} else {
+		document.getElementById("output").classList.add('greenText');
+		}
+	fahrenheitAnswer += '°F';
+    // console.log(fahrenheitOutput);
+    document.getElementById('output').innerHTML = '<h3>That is ' + fahrenheitAnswer + '</h3>'; 
 };
-
-// console.log(fahrenheitConverter(0))
 
 function celsiusConverter(input) {
-	let celsiusOutput = input*9/5 + 32;
-	celsiusOutput = celsiusOutput.toFixed(1);
-	console.log(celsiusOutput);
-	return celsiusOutput; //+ "°C";
+	let celsiusOutput = (input-32) * 5/9;
+	let celsiusAnswer = celsiusOutput.toFixed(1);
+		if (celsiusAnswer > 32) {
+		document.getElementById("output").classList.add('redText');
+		} else if (celsiusAnswer < 0) {
+		document.getElementById("output").classList.add('blueText');
+		} else {
+		document.getElementById("output").classList.add('greenText');
+		}
+	celsiusAnswer += '°C';
+	// console.log(celsiusOutput);
+	document.getElementById('output').innerHTML = '<h3>That is ' + celsiusAnswer + '</h3>'; 
 };
 
-// console.log(celsiusConverter(0))
+// function printedColors() {
+// 	if (celsiusConverter() > 32 || fahrenheitConverter() > 90) {
+// 		document.getElementById("output").classList.add('redText');
+// 	} else if (celsiusConverter() < 0 || fahrenheitConverter() < 32) {
+// 		document.getElementById("output").classList.add('blueText');
+// 	} else {
+// 		document.getElementById("output").classList.add('greenText');
+// 	};	
+// };
 
-function determineConverter(input) {
-	let radioSelectFahr = document.getElementById("fahrenheitRadio").checked;
-	let radioSelectCel = document.getElementById("celsiusRadio").checked;
-	let output = document.getElementById("output");
+function determineConverter() {
 	// radioSelect ? fahrenheitConverter() : celsiusConverter();
-	// debugger;
-	if (radioSelectFahr) {
-		return output.innerHTML = fahrenheitConverter(input);
-
-		// return output;
+	if (document.getElementById("fahrenheitRadio").checked) {
+		let inputFahrenheit = parseFloat(document.getElementById("userInput").value);
+		let returnedFahrenheit = fahrenheitConverter(inputFahrenheit);
+		return returnedFahrenheit;
+		//run print function
+	} else if (document.getElementById("celsiusRadio").checked) {
+		let inputCelsius = parseFloat(document.getElementById("userInput").value)
+		let returnedCelsius = celsiusConverter(inputCelsius);
+	  	return returnedCelsius;
+	  	//run print function
 	} else {
-	  	// output += '<h3>' + celsiusConverter(input) + '</h3>';
-	  	return output.innerHTML = celsiusConverter(input);
-	  	// return output;
+	  return ""; 
 	};
 };
-// console.log(determineConverter());
-// console.log(userInput);
-// let convertedTemp = determineConverter();
 
-let convertButton = document.getElementById("convertButton").addEventListener('click', determineConverter(userInput));
+function clearField() {
+	document.getElementById("userInput").value = "";
+	document.getElementById("output").innerHTML = "";
+}
+
+document.getElementById("convertButton").addEventListener('click', function(){determineConverter()});
+document.getElementById("userInput").addEventListener('keyup', function(){determineConverter()});
+document.getElementById("clearButton").addEventListener('click', function(){clearField()});
 
 
 
-// output.innerHTML = determineConverter(userInput); 
-
-
-
+// If the temperature is greater than 90F/32C the color of the converted temperature should be red.
+// If the temperature is less than 32F/0C the color of the converted temperature should be blue.
+// For any other temperature, the color should be green.
 
 
 
