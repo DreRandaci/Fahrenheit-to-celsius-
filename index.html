@@ -10,30 +10,25 @@
 	<main id="mainContainer">
 
 		<section>
-			<h1>Enter Temperature</h1>
 			<!-- where user will input numbers for conversion -->
+			<h3>Enter Temperature</h3>
 			<div id="input">
 				<input type="text" id="userInput" name="input-field" placeholder="Enter Temperature"><br>
-				<input type="radio" id="fahrenheitRadio" name="degree" value="fahrenheit">To Fahrenheit<br>
-				<input type="radio" id="celsiusRadio" name="degree" value="celsius">To Celsius <br>
-				<input type="text" id="output" name="output-field"><br>
-				<button id="convertButton">Convert</button>
+				<input type="radio" id="fahrenheitRadio" name="degree" value="fahrenheit">From Celsius to Fahrenheit<br>
+				<input type="radio" id="celsiusRadio" name="degree" value="celsius">From Fahrenheit to Celsius<br>
+				<button type="button" id="convertButton">Convert</button>
 			</div>
 			
 			<!-- Output number -->
-			<!-- <div id="output"> -->
-				
-			<!-- </div> -->
+			<div id="output">	
+			</div>
 			
 			<!-- Clear button -->
-			<div id="clearAllFields">
-				<button id="clearButton">Clear</button>
+			<div>
+				<button type="button" id="clearButton">Clear</button>
 			</div>
 
-<!-- end section -->
 		</section>
-
-<!-- end main -->
 	</main>
 
 <script type="text/javascript" src="./main.js"></script>
